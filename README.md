@@ -1,12 +1,11 @@
-# JavaScript Snippets for Sublime [![Build Status](https://secure.travis-ci.org/zenorocha/sublime-javascript-snippets.svg?branch=master)](https://travis-ci.org/zenorocha/sublime-javascript-snippets)
+# NodeJS ES6 snippets for SublimeText
 
-![Demo](https://cloud.githubusercontent.com/assets/398893/3528110/d55390be-078b-11e4-8587-db23277b50af.gif)
+This is a fork of [JavaScript & NodeJS Snippets for Sublime Text 2/3](zenorocha/sublime-javascript-snippets) by Zeno Rocha, using the ES6 syntax and without the DOM snippets.
 
 ## Install
 
 To install through [Package Control](http://wbond.net/sublime_packages/package_control),
-search for **JavaScript & NodeJS Snippets**. If you still don't have Package Control in Sublime Text, [go get it](http://wbond.net/sublime_packages/package_control/installation).
-It's pure awesomeness.
+search for **NodeJS ES6 snippets**. If you still don't have Package Control in Sublime Text, [go get it](http://wbond.net/sublime_packages/package_control/installation).
 
 If you prefer to install it manually, you can download the package and put it inside your `Packages` directory. It should work but will not update automatically.
 
@@ -42,124 +41,20 @@ console.warn(${1:obj});
 debugger;
 ```
 
-## DOM
-
-### [ae] addEventListener
-
-```javascript
-${1:document}.addEventListener('${2:event}', function(e) {
-	${3}
-});
-```
-
-### [ac] appendChild
-
-```javascript
-${1:document}.appendChild(${2:elem});
-```
-
-### [rc] removeChild
-
-```javascript
-${1:document}.removeChild(${2:elem});
-```
-
-### [cel] createElement
-
-```javascript
-${1:document}.createElement(${2:elem});
-```
-
-### [cdf] createDocumentFragment
-
-```javascript
-${1:document}.createDocumentFragment(${2:elem});
-```
-
-### [ca] classList.add
-
-```javascript
-${1:document}.classList.add('${2:class}');
-```
-
-### [ct] classList.toggle
-
-```javascript
-${1:document}.classList.toggle('${2:class}');
-```
-
-### [cr] classList.remove
-
-```javascript
-${1:document}.classList.remove('${2:class}');
-```
-
-### [gi] getElementById
-
-```javascript
-${1:document}.getElementById('${2:id}');
-```
-
-### [gc] getElementsByClassName
-
-```javascript
-${1:document}.getElementsByClassName('${2:class}');
-```
-
-### [gt] getElementsByTagName
-
-```javascript
-${1:document}.getElementsByTagName('${2:tag}');
-```
-
-### [ga] getAttribute
-
-```javascript
-${1:document}.getAttribute('${2:attr}');
-```
-
-### [sa] setAttribute
-
-```javascript
-${1:document}.setAttribute('${2:attr}', ${3:value});
-```
-
-### [ra] removeAttribute
-
-```javascript
-${1:document}.removeAttribute('${2:attr}');
-```
-
-### [ih] innerHTML
-
-```javascript
-${1:document}.innerHTML = '${2:elem}';
-```
-
-### [tc] textContent
-
-```javascript
-${1:document}.textContent = '${2:content}';
-```
-
-### [qs] querySelector
-
-```javascript
-${1:document}.querySelector('${2:selector}');
-```
-
-### [qsa] querySelectorAll
-
-```javascript
-${1:document}.querySelectorAll('${2:selector}');
-```
-
 ## Loop
 
 ### [fe] forEach
 
 ```javascript
-${1:myArray}.forEach(function(${2:elem}) {
+${1:myArray}.forEach(${2:elem} => {
+	${3}
+});
+```
+
+### [fei] forEach with index
+
+```javascript
+${1:myArray}.forEach((${2:elem}, i) {
 	${3}
 });
 ```
@@ -187,7 +82,7 @@ function ${1:methodName}(${2:arguments}) {
 ### [afn] anonymous function
 
 ```javascript
-function(${1:arguments}) {
+(${1:arguments}) => {
 	${2}
 }
 ```
@@ -195,17 +90,9 @@ function(${1:arguments}) {
 ### [pr] prototype
 
 ```javascript
-${1:ClassName}.prototype.${2:methodName} = function(${3:arguments}) {
+${1:ClassName}.prototype.${2:methodName} = (${3:arguments}) => {
 	${4}
 }
-```
-
-### [iife] immediately-invoked function expression
-
-```javascript
-(function(window, document, undefined) {
-	${1}
-})(window, document);
 ```
 
 ### [call] function call
@@ -223,7 +110,7 @@ ${1:methodName}.apply(${2:context}, [${3:arguments}])
 ### [ofn] function as a property of an object
 
 ```javascript
-${1:functionName}: function (${2:arguments}) {
+${1:functionName}(${2:arguments}) {
 	${3}
 }
 ```
@@ -233,7 +120,7 @@ ${1:functionName}: function (${2:arguments}) {
 ### [si] setInterval
 
 ```javascript
-setInterval(function() {
+setInterval(() => {
 	${2}
 }, ${1:delay});
 ```
@@ -241,7 +128,7 @@ setInterval(function() {
 ### [st] setTimeout
 
 ```javascript
-setTimeout(function() {
+setTimeout(() => {
 	${2}
 }, ${1:delay});
 ```
@@ -288,14 +175,14 @@ require('${1:module}');
 ### [desc] describe
 
 ```javascript
-describe('${1:description}', function() {
+describe('${1:description}', () => {
 	${2}
 });
 ```
 ### [ita] it asynchronous
 
 ```javascript
-it('${1:description}', function(done) {
+it('${1:description}', done => {
 	${2}
 });
 ```
@@ -303,7 +190,7 @@ it('${1:description}', function(done) {
 ### [its] it synchronous
 
 ```javascript
-it('${1:description}', function() {
+it('${1:description}', () => {
 	${2}
 });
 ```
@@ -322,24 +209,6 @@ it('${1:description}');
 'use strict';
 ```
 
-### [al] alert
-
-```javascript
-alert('${1:msg}');
-```
-
-### [co] confirm
-
-```javascript
-confirm('${1:msg}');
-```
-
-### [pm] prompt
-
-```javascript
-prompt('${1:msg}');
-```
-
 ## Contributing
 
 1. Fork it!
@@ -348,10 +217,6 @@ prompt('${1:msg}');
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-## History
-
-Check [Releases](https://github.com/zenorocha/sublime-javascript-snippets/releases) for detailed changelog.
-
 ## License
 
-[MIT License](http://zenorocha.mit-license.org/) © Zeno Rocha
+[MIT License](http://zenorocha.mit-license.org/) © Samuel Bolduc. Based on the work of [Zeno Rocha](https://github.com/zenorocha).
